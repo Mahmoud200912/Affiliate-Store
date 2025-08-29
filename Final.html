@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affiliate Store</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* 🔹 Header Styling */
+    header {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(90deg, #007bff, #00c6ff);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      animation: slideDown 0.8s ease;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #ffe600;
+    }
+    .lang-btn {
+      background: #fff;
+      color: #007bff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .lang-btn:hover {
+      background: #ffe600;
+      color: #111;
+    }
+
+    /* 🔹 Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #007bff, #00c6ff);
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      animation: fadeIn 1.2s ease-in;
+    }
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+      animation: slideUp 1s ease;
+    }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      animation: slideUp 1.4s ease;
+    }
+    .hero button {
+      background: #fff;
+      color: #007bff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      animation: fadeIn 1.8s ease;
+    }
+    .hero button:hover {
+      background: #f1f1f1;
+      transform: scale(1.05);
+    }
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* 🔹 Products Section */
+    .container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+      animation: fadeIn 1s ease-in;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .product {
+      border-radius: 12px;
+      padding: 15px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 0.8s ease-in;
+    }
+    .product:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+    .product img {
+      max-width: 100%;
+      border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .product:hover img {
+      transform: scale(1.05);
+    }
+    .price {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .price .original {
+      text-decoration: line-through;
+      color: #888;
+      margin-right: 5px;
+    }
+    .price .current {
+      color: #28a745;
+      font-weight: bold;
+    }
+    .buy-btn {
+      background: linear-gradient(90deg, #007bff, #00c6ff);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .buy-btn:hover {
+      background: linear-gradient(90deg, #0056b3, #0099cc);
+      transform: scale(1.05);
+    }
+
+    /* 🔹 Footer Styling */
+    footer {
+      background: linear-gradient(90deg, #111827, #1f2937);
+      color: #fff;
+      padding: 40px 20px;
+      margin-top: 40px;
+      animation: fadeIn 1.5s ease-in;
+    }
+    footer .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    footer h3 {
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    footer p, footer a {
+      font-size: 14px;
+      color: #bbb;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+    footer .social a {
+      margin-right: 10px;
+      font-size: 18px;
+      color: #bbb;
+      transition: 0.3s;
+    }
+    footer .social a:hover {
+      color: #ffe600;
+    }
+    footer .copyright {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <!-- 🔹 Header -->
+  <header>
+    <div class="logo" data-en="Affiliate Store" data-ar="متجر الأفلييت">Affiliate Store</div>
+    <nav>
+      <a href="#" data-en="Home" data-ar="الرئيسية">Home</a>
+      <a href="#products" data-en="Products" data-ar="المنتجات">Products</a>
+      <a href="#" data-en="About" data-ar="من نحن">About</a>
+      <a href="#" data-en="Contact" data-ar="تواصل معنا">Contact</a>
+    </nav>
+    <button class="lang-btn" onclick="toggleLang()">عربي</button>
+  </header>
+
+  <!-- 🔹 Hero Section -->
+  <section class="hero">
+    <h1 data-en="Best Deals & Products" data-ar="أفضل العروض والمنتجات">Best Deals & Products</h1>
+    <p data-en="Discover top products with unbeatable prices from the best stores worldwide."
+       data-ar="اكتشف منتجات مميزة بأسعار لا تقبل المنافسة من أفضل المتاجر العالمية.">
+       Discover top products with unbeatable prices from the best stores worldwide.
+    </p>
+    <a href="#products"><button data-en="Shop Now" data-ar="تسوق الآن">Shop Now</button></a>
+  </section>
+
+  <!-- 🔹 Products Section -->
+  <div class="container" id="products">
+    <h2 data-en="Our Products" data-ar="منتجاتنا">Our Products</h2>
+    <div class="products" id="products-container"></div>
+  </div>
+
+  <!-- 🔹 Footer -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <h3 data-en="Affiliate Store" data-ar="متجر الأفلييت">Affiliate Store</h3>
+        <p data-en="Your #1 destination for affiliate shopping from the best global stores."
+           data-ar="وجهتك الأولى للتسوق بالعمولة من أفضل المتاجر العالمية.">
+           Your #1 destination for affiliate shopping from the best global stores.
+        </p>
+        <div class="social">
+          <a href="#">🌐</a>
+          <a href="#">🐦</a>
+          <a href="#">📸</a>
+          <a href="#">🔗</a>
+        </div>
+      </div>
+      <div>
+        <h3 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h3>
+        <p><a href="#">Home</a></p>
+        <p><a href="#">Products</a></p>
+        <p><a href="#">About</a></p>
+        <p><a href="#">Contact</a></p>
+      </div>
+      <div>
+        <h3 data-en="Contact Info" data-ar="معلومات التواصل">Contact Info</h3>
+        <p>Email: ma7m0ud.m7md.365@gmail.com</p>
+        <p>Phone: +201146677792</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 Affiliate Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const products = [
+      {id:1, name:{en:"HOT 60 5G",ar:"انفنكس 60 الجيل الخامس"}, description:{en:"144Hz 3D Curved AMOLED Display | Corning® Gorilla® Glass* MediaTek Dimensity 7300 Ultimate 5G Chipset | InfinixAI One Touch♾️ Scented Leather Design | World's First Energizing Scent-Tech™ 45W All-Round FastCharge 3.0 with 5200mAh Battery 64MP SONY IMX682 Ultra-clear Camera | 4K Video Recording TÜV Certified Durability | IP64 Splash Resistant",ar:"· شاشة AMOLED منحنية 3D بتردد 144Hz | زجاج Corning® Gorilla®* شريحة MediaTek Dimensity 7300 Ultimate 5G | تقنية InfinixAI بلمسة واحدة♾️ تصميم جلدي عطري | أول تقنية عطرية محفّزة في العالم Energizing Scent-Tech™ شحن سريع All-Round FastCharge 3.0 بقدرة 45W مع سعة بطارية 5200mAh كاميرا فائقة الوضوح بدقة 64MP من SONY IMX682 | تصوير فيديو بدقة 4K متانة معتمدة من TÜV | مقاومة لرذاذ الماء بمعيار IP64"}, price:{current:13000,original:12499}, image:"Infinix-Note-50s.webp", link:"https://www.noon.com/egypt-en/note-50-s-dual-sim-marine-drift-16gb-ram-8-8-256gb-5g-middle-east-version/N70166625V/p/?o=b036d4637e761f9e&shareId=a55ad29b-d6fc-4c1e-b85d-33fb0d9448ef"},
+
+    ];
+
+    function renderProducts(lang) {
+      const container = document.getElementById("products-container");
+      container.innerHTML = "";
+      products.forEach(p => {
+        container.innerHTML += `
+          <div class="product">
+            <img src="${p.image}" alt="${p.name[lang]}">
+            <h3>${p.name[lang]}</h3>
+            <p>${p.description[lang]}</p>
+            <div class="price">
+              <span class="original">$${p.price.original}</span>
+              <span class="current">$${p.price.current}</span>
+            </div>
+            <a href="${p.link}" target="_blank">
+              <button class="buy-btn" data-en="Buy Now" data-ar="اشتر الآن">Buy Now</button>
+            </a>
+          </div>
+        `;
+      });
+    }
+
+    let currentLang = "en";
+    function toggleLang() {
+      currentLang = currentLang === "en" ? "ar" : "en";
+      document.querySelectorAll("[data-en]").forEach(el => {
+        el.innerText = el.getAttribute(`data-${currentLang}`);
+      });
+      document.querySelector(".lang-btn").innerText = currentLang === "en" ? "عربي" : "English";
+      document.body.setAttribute("dir", currentLang === "ar" ? "rtl" : "ltr");
+      renderProducts(currentLang);
+    }
+
+    renderProducts("en");
+  </script>
+</body>
+</html>
